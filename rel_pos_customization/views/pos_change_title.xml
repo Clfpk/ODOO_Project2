@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="werafood_name" inherit_id="point_of_sale.index">
+        <xpath expr="//title" position="replace">
+            <title>Werafood Pos</title>
+        </xpath>
+
+        <xpath expr="//link" position="replace">
+            <link type="image/x-icon" rel="shortcut icon"
+                  t-att-href="x_icon or '/rel_pos_customization/static/description/icon.png'"/>
+        </xpath>
+    </template>
+
+</odoo>

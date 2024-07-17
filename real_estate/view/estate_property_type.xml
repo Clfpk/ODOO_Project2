@@ -1,0 +1,96 @@
+<odoo>
+    <data>
+        <record id="view_estate_property_type_form" model="ir.ui.view">
+            <field name="name">estate.property.type.form</field>
+            <field name="model">estate.property.type</field>
+            <field name="arch" type="xml">
+                <form string="Property_Type">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                        <!--                        <button name="action_new" string="New" type="object" class="oe_highlight" state="draft"/>-->
+                        <!--                        <button name="action_offer_received" string="Offer Received" type="object" class="oe_highlight" state="offer_accepted,sold"/>-->
+                        <button name="action_sold" string="Sold" type="object" class="oe_highlight"/>
+                        <button name="action_cancel" string="Cancel" type="action" special="cancel" class="oe_highlight"/>
+
+                        <!--                        <button name="%(account.action_move_out_invoice_type)d" icon="fa-check"  type="action" class="oe_highlight"/>-->
+                        <!--                        <button name="action_reset" icon="fa-refresh" special="cancel" type="object" class="oe_highlight"/>-->
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="property_owner"/>
+                                <field name="property_types_id"/>
+                                <field name="email"/>
+                                <field name="mob"/>
+<!--                                <field name="state"/>-->
+                            </group>
+                            <group>
+                                <field name="selling_price"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <notebook>
+                        <page string="Offer">
+                            <group>
+                                <group>
+                                    <field name="buyer"/>
+                                </group>
+                                <group>
+                                    <field name="selling_date"/>
+                                </group>
+                                <group>
+                                    <button name="action_offer_accept" icon="fa-check"  type="object" class="oe_highlight" />
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_real_estate_property_type_tree" model="ir.ui.view">
+            <field name="name">estate.property.type.tree</field>
+            <field name="model">estate.property.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="property_types_id"/>
+                    <field name="property_owner"/>
+                    <field name="buyer"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="view_real_estate_property_type_action">
+            <field name="name">Estate Property Type</field>
+            <field name="res_model">estate.property.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+                id="menu_estate_property_type_info"
+                name="Property Info"
+                action="view_real_estate_property_type_action"
+                sequence="2"/>
+<!--                parent="menu_real_estate_property"-->
+
+
+        <!--        <menuitem-->
+        <!--                id="menu_estate_property_type"-->
+        <!--                name="Type "-->
+        <!--                parent="menu_estate_property_type_info"-->
+        <!--                action="view_estate_property_type_action"-->
+        <!--                sequence="2"/>-->
+        <!--        <menuitem-->
+        <!--                id="menu_estate_property_buyer"-->
+        <!--                name="Buyer "-->
+        <!--                parent="menu_estate_property_type_info"-->
+        <!--                action="view_estate_property_type_action"-->
+        <!--                sequence="3"/>-->
+        <!--        <menuitem-->
+        <!--                id="menu_estate_property_seller"-->
+        <!--                name="Seller "-->
+        <!--                parent="menu_estate_property_type_info"-->
+        <!--                action="view_estate_property_type_action"-->
+        <!--                sequence="4"/>-->
+    </data>
+</odoo>

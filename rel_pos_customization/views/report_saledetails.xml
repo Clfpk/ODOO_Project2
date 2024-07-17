@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_saledetails" name="Sales Report" inherit_id="point_of_sale.report_saledetails">
+        <xpath  expr="//table/tbody/tr/td[1]" position="replace">
+           <td style="background-color: #dadada;"><span t-out="category['name']">Technical Stuffs</span></td>
+        </xpath>
+        <xpath  expr="//table/tbody/tr/td[2]" position="after">
+            <td style="background-color: #dadada;"></td>
+        </xpath>
+        <xpath  expr="//table/tbody/tr[2]/td[2]" position="after">
+            <td style="background-color: #b1b1b1;"></td>
+        </xpath>
+         <xpath  expr="//table/thead/tr/th[2]" position="after">
+               <th class="text-note">Note</th>
+         </xpath>
+         <xpath  expr="//table/tbody/tr/tr/td[2]" position="after">
+             <td> <span t-out='line["note"]'>Test</span></td>
+         </xpath>
+
+        </template>
+    </data>
+</odoo>

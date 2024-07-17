@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pos_rel.Navbar" t-inherit="point_of_sale.Navbar" t-inherit-mode="extension">
+         <xpath expr="//div[@t-if='!ui.isSmall']" position="replace">
+              <img class="pos-logo h-75 ms-3 me-auto align-self-center" style="width:100px;height:80px!important"
+                   t-on-click="() => debug.toggleWidget()" src="/rel_pos_customization/static/src/img/wera_logo.png"
+                   alt="Logo"/>
+         </xpath>
+        <xpath expr="//BackButton[@t-if='showBackButton()']" position="after">
+                 <t t-if="pos.table">
+                     <div style="width: fit-content;">
+                     <span style="font-size:larger;font-weight: bold;padding-top:10px; background-color: palegreen;">Table-<span t-esc="pos.table.name"/></span>
+                     </div>
+                 </t>
+         </xpath>
+    </t>
+</templates>

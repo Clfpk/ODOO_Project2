@@ -1,0 +1,106 @@
+<odoo>
+    <data>
+        <record id="view_real_estate_property_tree" model="ir.ui.view">
+            <field name="name">real.estate.property.tree</field>
+            <field name="model">real.estate.property</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="postcode"/>
+                    <field name="selling_price"/>
+                    <field name="property_types_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_real_estate_property_form" model="ir.ui.view">
+            <field name="name">real.estate.property.form</field>
+            <field name="model">real.estate.property</field>
+            <field name="arch" type="xml">
+                <form string="Property Details">
+                    <header>
+                        <button name="%(real_estate.view_real_estate_property_action)d" icon="fa-check" special="save" type="action" class="oe_highlight"/>
+                        <button name="action_reset" icon="fa-refresh" special="cancel" type="object" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group name="Real Estate Property">
+                            <group>
+                                <field name="name"/>
+                                <field name="bedrooms"/>
+                                <field name="garden"/>
+                                <field name="length"/>
+                                <field name="width"/>
+                            </group>
+                            <group>
+                                <field name="garden_orientation"/>
+                                <field name="computed_fields"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <notebook>
+                        <page string="Details">
+                            <group>
+                                <group>
+                                    <field name="description"/>
+                                    <field name="selling_price"/>
+                                    <field name="postcode"/>
+                                </group>
+                                <group>
+                                    <field name="country"/>
+                                    <field name="creation_date"/>
+                                    <field name="property_types_id"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Contact Details">
+                                    <group>
+                                        <field name="email"/>
+                                        <field name="mob"/>
+                                    </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_real_estate_property_search" model="ir.ui.view">
+            <field name="name">real.estate.property.search</field>
+            <field name="model">real.estate.property</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" filter_domain="['|', ('name', 'ilike', self), ('postcode', 'ilike', self)]"
+                           string="Property"/>
+                    <field name="name"/>
+                    <field name="postcode"/>
+                    <filter string="Postcode" name="postcode" domain="[('postcode', '=', 'postcode')]"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="view_real_estate_property_action">
+            <field name="name">Real Estate Property</field>
+            <field name="res_model">real.estate.property</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+                id="menu_real_estate_property"
+                name="Real Estate Property"
+                action="view_real_estate_property_action"
+                sequence="1"/>
+        <menuitem
+                id="menu_contact_real_estate_property"
+                name="Contact"
+                parent="menu_real_estate_property"
+                action="contacts.action_contacts"
+                sequence="10"/>
+<!--        <menuitem-->
+<!--                id="menu_properties_real_estate_property"-->
+<!--                name="Properties"-->
+<!--                parent="menu_contact_real_estate_property"-->
+<!--                action="view_real_estate_property_action"-->
+<!--                sequence="8"/>-->
+    </data>
+</odoo>

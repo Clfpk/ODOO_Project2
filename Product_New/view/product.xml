@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="view_order_line_form_inherit" model="ir.ui.view">
+            <field name="name">product.order.line.form.inherit</field>
+            <field name="model">product.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form_.inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='products']/field[@name='order_line']/tree" position="inside">
+                    <field name="material_name"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+ 
